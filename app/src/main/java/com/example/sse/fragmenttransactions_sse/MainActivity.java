@@ -50,7 +50,7 @@ private
         btnFrag3 = (Button) findViewById(R.id.btnFrag3);
         FragLayout = (LinearLayout) findViewById(R.id.FragLayout);
 
-//        f1 = (Frag_One) findViewById(R.id.frag1);  //Q: Why won't this work for fragments?  Does the fragment even exist in R.java? No.
+//        f1 = (Frag_One) findViewById(R.id.frag1);  //Q: Why won't this work for fragments?  Fragments are not a view. Does the fragment even exist in R.java? No.
 
     //5a.  We actually have to create the fragments ourselves.  We left R behind when we took control of rendering.
         f1 = new Frag_One();
@@ -59,7 +59,7 @@ private
 
     //5b. Grab a reference to the Activity's Fragment Manager, Every Activity has one!
        fm = getFragmentManager ();  //that was easy.
-//         fm = getSupportFragmentManager();  // **When would you use this instead?? A: __________________
+//         fm = getSupportFragmentManager();  // **When would you use this instead?? A: When you create the fragment in the activity
 
 
     //5c. Now we can "plop" fragment(s) into our container.
@@ -113,6 +113,7 @@ private
             ft.detach(f3);
         }
         ft.attach(f1);
+        ft.addToBackStack ("myFrag1");
         ft.commit();
     }
 
@@ -129,7 +130,7 @@ private
             ft.detach(f3);
         }
         ft.attach(f2);
-        ft.addToBackStack ("myFrag2");  //Q: What is the back stack and why do we do this? _______________
+        ft.addToBackStack ("myFrag2");  //Q: What is the back stack and why do we do this? The back stack stores transaction history.
         ft.commit();
     }
 
