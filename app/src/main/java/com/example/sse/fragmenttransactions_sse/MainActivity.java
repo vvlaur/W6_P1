@@ -140,7 +140,6 @@ private
         if (f3 == null){
             f3 = new Frag_Three();
         }
-
         FragmentTransaction ft = fm.beginTransaction ();  //Create a reference to a fragment transaction.
         if(f1 != null) {
             ft.detach(f1);
